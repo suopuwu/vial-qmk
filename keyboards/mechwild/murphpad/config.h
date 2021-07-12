@@ -92,3 +92,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Bootmagic Lite key configuration */
 #define BOOTMAGIC_LITE_ROW 0
 #define BOOTMAGIC_LITE_COLUMN 1
+#define VIAL_KEYBOARD_UID {0xB3, 0xF6, 0x53, 0xF8, 0x8D, 0xB0, 0xFB, 0xA0}
