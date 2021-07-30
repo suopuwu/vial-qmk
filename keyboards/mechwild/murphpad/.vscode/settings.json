@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "stdlib.h": "c",
+    "string.h": "c",
+    "bignumber.h": "c",
+    "avr_f64.h": "c"
+  }
+}

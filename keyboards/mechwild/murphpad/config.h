@@ -88,8 +88,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* disable these deprecated features by default */
 #define NO_ACTION_MACRO
 #define NO_ACTION_FUNCTION
-
 /* Bootmagic Lite key configuration */
 #define BOOTMAGIC_LITE_ROW 0
 #define BOOTMAGIC_LITE_COLUMN 1
 #define VIAL_KEYBOARD_UID {0xB3, 0xF6, 0x53, 0xF8, 0x8D, 0xB0, 0xFB, 0xA0}
+#define NO_ACTION_MACRO
+#define NO_ACTION_FUNCTION
+#ifndef NO_DEBUG
+#define NO_DEBUG
+#endif // !NO_DEBUG
+#ifndef NO_PRINT
+#define NO_PRINT
+#endif // !NO_PRINT
