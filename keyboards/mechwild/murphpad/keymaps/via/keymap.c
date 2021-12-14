@@ -31,7 +31,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                   KC_MPRV,   KC_MPLY,   KC_MNXT,   TG(_FN1),
 				          KC_ESC, KC_PSLS, KC_PAST, KC_PMNS,
                   KC_P7,   KC_P8,   KC_P9,   KC_PPLS,
-        KC_DEL,  KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
+        KC_TAB,  KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
         KC_BSPC, KC_P1,   KC_P2,   KC_P3,   KC_PENT,
         KC_COMM,  KC_P0,   KC_P0,   KC_PDOT, KC_PENT,
 		
@@ -52,6 +52,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
+void led_set_keymap(uint8_t usb_led) {
+  if (!(usb_led & (1<<USB_LED_NUM_LOCK))) {
+    register_code(KC_NUMLOCK);
+    unregister_code(KC_NUMLOCK);
+  }
+}
 
 #ifdef ENCODER_ENABLE
 bool encoder_update_user(uint8_t index, bool clockwise) {
@@ -321,7 +327,7 @@ void morphNumericString (char *s, int n) {
 			case KC_PENT:
 				adjusted_keycode = '=';
 				break;
-			case KC_DEL: 
+			case KC_BSPC: 
 				if (strlen(char_stack) >= 1) {
 					switch (char_stack[strlen(char_stack) - 1])
 					{
@@ -466,13 +472,6 @@ void morphNumericString (char *s, int n) {
 		}
 		
 		//todo make it so that the different states display correctly. Perhaps set it up so that each state has its own image.
-		
-		// Host Keyboard LED Status
-		led_t led_state = host_keyboard_led_state();
-		if (!led_state.num_lock) {
-			register_code(KC_NUMLOCK);
-			unregister_code(KC_NUMLOCK);
-		}
 		void timed_events(void) {
 			if(timer_elapsed(calculator_timer) > 30000) {
 				calc_on = false;
